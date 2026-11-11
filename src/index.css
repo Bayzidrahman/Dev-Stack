@@ -1,0 +1,61 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+/* ---------------------------------------------------------------
+   BRAND THEME
+   The orange → pink → violet gradient lives in ONE place.
+   Change --brand-gradient and the logo, hero highlight, headings
+   and every primary button re-theme automatically.
+---------------------------------------------------------------- */
+:root {
+  --brand-gradient: linear-gradient(90deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+}
+
+/* Gradient used as a background (buttons, logo mark) */
+@utility bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+/* Gradient used as text colour (brand name, hero highlight) */
+@utility text-brand-gradient {
+  background-image: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Shared page container: 1216px wide, responsive side padding */
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1216px;
+  padding-inline: 1rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 0;
+  }
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-slate-900 antialiased;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
